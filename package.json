@@ -2,8 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build",
-        "heroku-postbuild": "npm run production"
+        "development": "npm run build",
+        "heroku-postbuild": "npm run build"
     },
     "devDependencies": {
         "axios": "^0.27",
