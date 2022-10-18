@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UrlsController;
+use App\Http\Controllers\UrlsCheckController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::resource('urls', UrlsController::class)->except(['edit', 'create', 'update', 'destroy']);
+
+Route::resource('urls.check', UrlsCheckController::class)->only('store');
+
