@@ -1,39 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
 
-@extends('layout')
+<link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
-@section('content')
-
-<main class="flex-grow-1">
-    <div class="container-lg">
-        <h1 class="mt-5 mb-3">Сайты</h1>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover text-nowrap">
-                <tr>
-                    <th>ID</th>
-                    <th>Имя</th>
-                    <th>Последняя проверка</th>
-                    <th>Код ответа</th>
-                </tr>
-
-                @foreach($urls as $url)
-
-                <tr>
-                    <td>{{ $url->id }}</td>
-                    <td><a href="{{ route('urls.show', $url->id) }}">{{ $url->name }}</a></td>
-                    <td>{{ $url->updated_at }}</td>
-                    <td>{{ $status->get($url->id)->status_code ?? '' }}</td>
-                </tr>
-
-                @endforeach
-
-            </table>
-            <div class="pagination justify-content-end">
-
-                {{ $urls->links() }}
-
-            </div>
-        </div>
-    </div>
-</main>
-
-@endsection
+</head>
+  <body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="{{ route('welcome') }}">Анализатор страниц</a>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ route('welcome') }}">Главная<span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('urls.index') }}">Сайты</a>
+                            </li>
+                        </ul>
+                    </div>
+        </nav>
+    </header>
+<div class="container">
+    <p>
+    <h1>@yield('title')</h1>
+    <main>
+        @yield('content')
+    </main>
+    </p>
+</div>
+</body>
+</html>
